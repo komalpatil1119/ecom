@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PrintYouth Navbar</title>
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #090105;
+            min-height: 200vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* TOP STRIP */
+
+        .top-strip {
+            background: #ff0055;
+            color: #fff;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 12px 15px;
+        }
+
+        /* HEADER */
+
+        .main-header {
+            position: absolute;
+            top: 58px;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            transition: .3s ease;
+        }
+
+        .main-header.sticky {
+            position: fixed;
+            top: 0;
+        }
+
+        .header-wrap {
+            width: 94%;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.92);
+            border-radius: 28px;
+            padding: 16px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            transition: .3s;
+        }
+
+        .main-header.sticky .header-wrap {
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* LOGO */
+
+        .logo img {
+            height: 46px;
+        }
+
+        /* MENU */
+
+        .main-menu {
+            display: flex;
+            align-items: center;
+            gap: 38px;
+        }
+
+        .main-menu li {
+            position: relative;
+        }
+
+        .main-menu li a {
+            color: #ddd;
+            font-size: 18px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .main-menu li a:hover {
+            color: #fff;
+        }
+
+        .sale-link {
+            color: #ff2b67 !important;
+        }
+
+        .deal-link {
+            color: #ffcc22 !important;
+        }
+
+        .shop-btn {
+            background: #252525;
+            padding: 14px 22px;
+            border-radius: 16px;
+        }
+
+        /* RIGHT */
+
+        .right-side {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .icon-btn {
+            color: #fff;
+            font-size: 30px;
+        }
+
+        .signin-btn {
+            background: #ff0055;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 18px;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .mobile-toggle {
+            display: none;
+            color: #fff;
+            font-size: 34px;
+            cursor: pointer;
+        }
+
+        /* MEGA MENU DESKTOP */
+
+        .mega-menu {
+            position: absolute;
+            top: 80px;
+            left: -360px;
+            width: 980px;
+            background: #f4f4f4;
+            border-radius: 26px;
+            padding: 38px;
+            opacity: 0;
+            visibility: hidden;
+            transition: .35s ease;
+        }
+
+        .has-dropdown:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            top: 70px;
+        }
+
+        .mega-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .browse-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .mega-title {
+            color: #9d9d9d;
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .cat-item {
+            display: flex;
+            gap: 15px;
+        }
+
+        .cat-item span {
+            font-size: 28px;
+        }
+
+        .cat-item h5 {
+            font-size: 18px;
+            color: #222;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .cat-item p {
+            margin: 0;
+            color: #8c8c8c;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .quick-links {
+            border-left: 1px solid #ddd;
+            padding-left: 30px;
+        }
+
+        .quick-links ul li {
+            margin-bottom: 24px;
+        }
+
+        .quick-links ul li a {
+            color: #666;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .hot-deal {
+            background: #fff0f5;
+            border: 1px solid #ffd4df;
+            border-radius: 24px;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        .hot-deal span {
+            color: #ff0055;
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        .hot-deal h4 {
+            font-size: 20px;
+            line-height: 1.5;
+            margin: 14px 0 20px;
+            font-weight: 800;
+            color: #111;
+        }
+
+        .hot-deal a {
+            background: #ff0055;
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 14px;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        /* HERO */
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to right, #0a0004, #180007);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 90px;
+            font-weight: 900;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:1199px) {
+
+            .main-header {
+                top: 47px;
+            }
+
+            .main-header.sticky {
+                top: 0;
+            }
+
+            .header-wrap {
+                width: 100%;
+                border-radius: 0;
+                padding: 16px 20px;
+                background: #fff;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+
+            .icon-btn {
+                color: #333;
+                font-size: 24px;
+            }
+
+            .mobile-toggle {
+                display: block;
+                color: #333;
+                font-size: 34px;
+                z-index: 99999;
+            }
+
+            .signin-btn {
+                display: none;
+            }
+
+            .main-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                max-width: 340px;
+                height: 100vh;
+                background: #fff;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                padding: 110px 24px 40px;
+                transition: .4s ease;
+                overflow-y: auto;
+                z-index: 9999;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.18);
+            }
+
+            .main-menu.active {
+                right: 0;
+            }
+
+            .main-menu li {
+                width: 100%;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            }
+
+            .main-menu li a {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                padding: 18px 0;
+                font-size: 18px;
+                color: #333;
+                font-weight: 600;
+            }
+
+            /* MOBILE DROPDOWN */
+
+            .mega-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                padding: 24px;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                border-radius: 26px;
+                background: #f4f4f4;
+            }
+
+            .has-dropdown.open .mega-menu {
+                display: block;
+            }
+
+            .mega-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .browse-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 22px;
+            }
+
+            .quick-links {
+                border-left: 0;
+                padding-left: 0;
+                margin-top: 10px;
+            }
+
+            .cat-item {
+                align-items: center;
+            }
+
+            .cat-item h5 {
+                font-size: 17px;
+                margin: 0;
+            }
+
+            .cat-item p {
+                display: none;
+            }
+
+            .hot-deal {
+                display: none;
+            }
+        }
+
+        @media(max-width:768px) {
+
+            .top-strip {
+                font-size: 13px;
+                padding: 10px;
+            }
+
+            .hero {
+                font-size: 48px;
+                text-align: center;
+                padding: 0 20px;
+            }
+
+            .browse-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+
+    <div class="top-strip">
+        ✨ Free commercial license included ✨
+    </div>
+
+    <!-- HEADER -->
+
+    <header class="main-header" id="mainHeader">
+
+        <div class="header-wrap">
+
+            <div class="header-flex">
+
+                <!-- LOGO -->
+
+                <a href="#" class="logo">
+                    <img src="https://i.ibb.co/FwT5s7w/logo.png" alt="">
+                </a>
+
+                <!-- MENU -->
+
+                <ul class="main-menu" id="mainMenu">
+
+                    <li class="has-dropdown">
+
+                        <a href="#" class="shop-btn shop-toggle">
+                            Shop All
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+
+                        <!-- MEGA MENU -->
+
+                        <div class="mega-menu">
+
+                            <div class="mega-grid">
+
+                                <div>
+
+                                    <h6 class="mega-title">
+                                        Shop All
+                                    </h6>
+
+                                    <div class="browse-grid">
+
+                                        <div class="cat-item">
+                                            <span>🪄</span>
+                                            <div>
+                                                <h5>Anime</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="cat-item">
+                                            <span>🏙️</span>
+                                            <div>
+                                                <h5>Streetwear</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="cat-item">
+                                            <span>🏍️</span>
+                                            <div>
+                                                <h5>Car & Bike</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="cat-item">
+                                            <span>🧒</span>
+                                            <div>
+                                                <h5>Kidswear</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="cat-item">
+                                            <span>✍️</span>
+                                            <div>
+                                                <h5>Typography</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="cat-item">
+                                            <span>🎭</span>
+                                            <div>
+                                                <h5>Vintage</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="cat-item">
+                                            <span>💪</span>
+                                            <div>
+                                                <h5>Motivational</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="cat-item">
+                                            <span>🌿</span>
+                                            <div>
+                                                <h5>Nature</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="cat-item">
+                                            <span>⚽</span>
+                                            <div>
+                                                <h5>Sports</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="cat-item">
+                                            <span>🎨</span>
+                                            <div>
+                                                <h5>Abstract</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="cat-item">
+                                            <span>💀</span>
+                                            <div>
+                                                <h5>Horror</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="cat-item">
+                                            <span>🎵</span>
+                                            <div>
+                                                <h5>Music</h5>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- QUICK LINKS -->
+
+                                <div class="quick-links">
+
+                                    <ul>
+
+                                        <li>
+                                            <a href="#">⭐ Featured</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">🔥 Sale</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">⚡ New Arrivals</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">🏷️ Best Deal</a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                    <li>
+                        <a href="#">Featured</a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="sale-link">🔥 Sale</a>
+                    </li>
+
+                    <li>
+                        <a href="#">New Arrivals</a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="deal-link">🏷️ Best Deal</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Contact Us</a>
+                    </li>
+
+                </ul>
+
+                <!-- RIGHT -->
+
+                <div class="right-side">
+
+                    <a href="#" class="icon-btn">
+                        <i class="bi bi-search"></i>
+                    </a>
+
+                    <a href="#" class="icon-btn">
+                        <i class="bi bi-cart3"></i>
+                    </a>
+                    <a href="#" class="signin-btn">
+                        Sign In
+                      </a>
+                    <div class="mobile-toggle" id="mobileToggle">
+                        <i class="bi bi-list"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero-section">
+
+        <div class="container">
+    
+          <div class="badge">
+            <div class="badge-dot"></div>
+            <span>48+ BUNDLES · PNG · PSD · AI · COMMERCIAL LICENSE</span>
+          </div>
+    
+          <h1 class="hero-title">
+            T-Shirt Design
+            <span class="highlight">Bundles</span>
+            for POD Sellers
+          </h1>
+    
+          <p class="hero-description">
+            Premium print-ready designs for Printful, Printify, Etsy & Merch by Amazon.
+            300 DPI · Transparent PNG · Full commercial license · Instant download.
+          </p>
+    
+          <p class="offer-text">
+            ₹199–₹349 per bundle • Instant ZIP Download • The most affordable commercial-license POD designs
+          </p>
+    
+          <a href="#" class="cta-btn">
+            Browse All Bundles
+            →
+          </a>
+    
+          <div class="categories">
+            <span>🎮 Anime</span>
+            <span>🛣️ Streetwear</span>
+            <span>🏍️ Car & Bike</span>
+            <span>✍️ Typography</span>
+          </div>
+    
+          <div class="features">
+    
+            <div class="feature">
+              <i class="fa-solid fa-download"></i>
+              Instant Download
+            </div>
+    
+            <div class="feature">
+              <i class="fa-regular fa-shield"></i>
+              Commercial License
+            </div>
+    
+            <div class="feature">
+              <i class="fa-solid fa-bolt"></i>
+              300 DPI Print Ready
+            </div>
+    
+            <div class="feature">
+              <i class="fa-regular fa-cube"></i>
+              PNG + PSD + AI
+            </div>
+    
+          </div>
+    
+        </div>
+    
+      </section>
+      <section class="bundle-section">
+        <div class="container">
+    
+          <div class="section-header">
+            <div>
+              <span class="top-label">48+ BUNDLES AVAILABLE</span>
+              <h2>Browse T-Shirt Design Bundles</h2>
+            </div>
+    
+            <a href="#" class="view-all">
+              View all designs →
+            </a>
+          </div>
+    
+          <!-- Categories -->
+          <div class="filter-tabs">
+    
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="anime"> Anime</button>
+            <button class="filter-btn" data-filter="streetwear"> Streetwear</button>
+            <button class="filter-btn" data-filter="car-bike"> Car & Bike</button>
+            <button class="filter-btn" data-filter="typography"> Typography</button>
+            <button class="filter-btn" data-filter="vintage"> Vintage</button>
+            <button class="filter-btn" data-filter="horror"> Horror</button>
+            <button class="filter-btn" data-filter="sports"> Sports</button>
+            <button class="filter-btn" data-filter="music"> Music</button>
+    
+          </div>
+    
+          <!-- Products -->
+          <div class="product-grid">
+            <!-- Anime Bundle -->
+    
+            <div class="product-card bundle-card anime">
+    
+              <div class="product-image">
+                <span class="discount">-80%</span>
+                <img src="images/bundle/img1.png" alt="Anime Bundle" class="img-fluid">
+                <button class="quick-add-btn"><i class="bi bi-bag-plus"></i> Quick Add</button>
+              </div>
+    
+              <div class="product-content">
+    
+                <span class="tag">ANIME</span>
+    
+                <h3>
+                  20,500+ Premium Anime Bundle
+                </h3>
+    
+                <div class="meta">
+                  1 file · PNG, PSD
+                </div>
+    
+                <div class="sold">
+                  ⚡ 2+ sold
+                </div>
+    
+              </div>
+    
+              <div class="card-footer">
+    
+                <div class="price">₹399</div>
+    
+                <button class="add-btn">
+                  🛒 Add
+                </button>
+    
+              </div>
+    
+            </div>
+    
+            <!-- Dragon Ball Z -->
+    
+            <div class="product-card bundle-card anime">
+    
+              <div class="product-image">
+                <span class="discount">-90%</span>
+                <img src="images/bundle/img1.png" alt="Anime Bundle" class="img-fluid">
+                <button class="quick-add-btn"><i class="bi bi-bag-plus"></i> Quick Add</button>
+              </div>
+    
+              <div class="product-content">
+    
+                <span class="tag">ANIME</span>
+    
+                <h3>
+                  Dragon Ball Z Bundle
+                </h3>
+    
+                <div class="meta">
+                  1 file · PNG, EPS
+                </div>
+    
+                <div class="sold">
+                  ⚡ 1+ sold
+                </div>
+    
+              </div>
+    
+              <div class="card-footer">
+    
+                <div class="price">₹199</div>
+    
+                <button class="add-btn">
+                  🛒 Add
+                </button>
+    
+              </div>
+    
+            </div>
+    
+            <!-- Streetwear -->
+    
+            <div class="product-card bundle-card streetwear">
+    
+              <div class="product-image">
+                <span class="discount">-95%</span>
+                <img src="images/bundle/img1.png" alt="Anime Bundle" class="img-fluid">
+              </div>
+    
+              <div class="product-content">
+    
+                <span class="tag">STREETWEAR</span>
+    
+                <h3>
+                  1000+ Streetwear Bundle
+                </h3>
+    
+                <div class="meta">
+                  1 file · PNG
+                </div>
+    
+                <div class="sold">
+                  ⚡ 6+ sold
+                </div>
+    
+              </div>
+    
+              <div class="card-footer">
+    
+                <div class="price">₹99</div>
+    
+                <button class="add-btn">
+                  🛒 Add
+                </button>
+    
+              </div>
+    
+            </div>
+    
+            <!-- Ultimate Streetwear -->
+    
+            <div class="product-card bundle-card streetwear">
+    
+              <div class="product-image">
+                <span class="discount">-90%</span>
+                <img src="images/bundle/img1.png" alt="Anime Bundle" class="img-fluid">
+              </div>
+    
+              <div class="product-content">
+    
+                <span class="tag">STREETWEAR</span>
+    
+                <h3>
+                  5000+ Ultimate Streetwear T Shirt Design Bundle
+                </h3>
+    
+                <div class="meta">
+                  1 file · PNG, PSD
+                </div>
+    
+                <div class="sold">
+                  ⚡ 1+ sold
+                </div>
+    
+              </div>
+    
+              <div class="card-footer">
+    
+                <div class="price">₹399</div>
+    
+                <button class="add-btn">
+                  🛒 Add
+                </button>
+    
+              </div>
+    
+            </div>
+    
+            <!-- Typography -->
+    
+            <div class="product-card bundle-card typography">
+    
+              <div class="product-image">
+                <span class="discount">-95%</span>
+                <img src="images/bundle/img1.png" alt="">
+              </div>
+    
+              <div class="product-content">
+    
+                <span class="tag">TYPOGRAPHY</span>
+    
+                <h3>
+                  100+ Typography Bundle
+                </h3>
+    
+                <div class="meta">
+                  1 file · PNG, SVG
+                </div>
+    
+                <div class="sold">
+                  ⚡ 3+ sold
+                </div>
+    
+              </div>
+    
+              <div class="card-footer">
+    
+                <div class="price">₹99</div>
+    
+                <button class="add-btn">
+                  🛒 Add
+                </button>
+    
+              </div>
+    
+            </div>
+    
+            <!-- Typography V3 -->
+    
+            <div class="product-card bundle-card typography">
+    
+              <div class="product-image">
+                <span class="discount">-85%</span>
+                <img src="images/bundle/img1.png" alt="">
+              </div>
+    
+              <div class="product-content">
+    
+                <span class="tag">TYPOGRAPHY</span>
+    
+                <h3>
+                  200+ Typography V3 Bundle
+                </h3>
+    
+                <div class="meta">
+                  1 file · PNG, SVG
+                </div>
+    
+                <div class="sold">
+                  ⚡ 2+ sold
+                </div>
+    
+              </div>
+    
+              <div class="card-footer">
+    
+                <div class="price">₹299</div>
+    
+                <button class="add-btn">
+                  🛒 Add
+                </button>
+    
+              </div>
+    
+            </div>
+    
+            <!-- Supercar -->
+    
+            <div class="product-card bundle-card car-bike">
+    
+              <div class="product-image">
+                <span class="discount">-87%</span>
+                <img src="images/bundle/img1.png" alt="">
+              </div>
+    
+              <div class="product-content">
+    
+                <span class="tag">CAR & BIKE</span>
+    
+                <h3>
+                  150+ Supercar Bundle
+                </h3>
+    
+                <div class="meta">
+                  1 file · PNG
+                </div>
+    
+                <div class="sold">
+                  ⚡ 9+ sold
+                </div>
+    
+              </div>
+    
+              <div class="card-footer">
+    
+                <div class="price">₹199</div>
+    
+                <button class="add-btn">
+                  🛒 Add
+                </button>
+    
+              </div>
+    
+            </div>
+    
+            <!-- Car Design -->
+    
+            <div class="product-card bundle-card car-bike">
+    
+              <div class="product-image">
+                <span class="discount">-85%</span>
+                <img src="images/bundle/img1.png" alt="">
+              </div>
+    
+              <div class="product-content">
+    
+                <span class="tag">CAR & BIKE</span>
+    
+                <h3>
+                  1000+ Car Design Bundle
+                </h3>
+    
+                <div class="meta">
+                  1 file · PNG, EPS
+                </div>
+    
+                <div class="sold">
+                  ⚡ 1+ sold
+                </div>
+    
+              </div>
+    
+              <div class="card-footer">
+    
+                <div class="price">₹299</div>
+    
+                <button class="add-btn">
+                  🛒 Add
+                </button>
+    
+              </div>
+    
+            </div>
+          </div>
+    
+        </div>
+      </section>
+      <section class="category-section">
+        <div class="container">
+    
+          <!-- Heading -->
+          <div class="d-flex justify-content-between align-items-center flex-wrap ">
+            <div>
+              <p class="top-text">ALL NICHES</p>
+              <h2 class="section-header">Browse by Category</h2>
+            </div>
+    
+            <a href="#" class="view-all">
+              View all →
+            </a>
+          </div>
+    
+          <!-- Categories -->
+          <div class="row">
+    
+            <div class="category-item">
+              <div class="category-card">
+                <div class="category-icon">🎌</div>
+                <h4>Anime</h4>
+              </div>
+            </div>
+    
+            <div class="category-item">
+              <div class="category-card">
+                <div class="category-icon">🏙️</div>
+                <h4>Streetwear</h4>
+              </div>
+            </div>
+    
+            <div class="category-item">
+              <div class="category-card">
+                <div class="category-icon">🏎️</div>
+                <h4>Car & Bike</h4>
+              </div>
+            </div>
+    
+            <div class="category-item">
+              <div class="category-card">
+                <div class="category-icon">✍️</div>
+                <h4>Typography</h4>
+              </div>
+            </div>
+    
+            <div class="category-item">
+              <div class="category-card">
+                <div class="category-icon">🎭</div>
+                <h4>Vintage</h4>
+              </div>
+            </div>
+    
+            <div class="category-item">
+              <div class="category-card">
+                <div class="category-icon">💪</div>
+                <h4>Motivational</h4>
+              </div>
+            </div>
+    
+            <div class="category-item">
+              <div class="category-card">
+                <div class="category-icon">💀</div>
+                <h4>Horror</h4>
+              </div>
+            </div>
+    
+            <div class="category-item">
+              <div class="category-card">
+                <div class="category-icon">⚽</div>
+                <h4>Sports</h4>
+              </div>
+            </div>
+    
+            <div class="category-item">
+              <div class="category-card">
+                <div class="category-icon">🌿</div>
+                <h4>Nature</h4>
+              </div>
+            </div>
+    
+            <div class="category-item">
+              <div class="category-card">
+                <div class="category-icon">🎵</div>
+                <h4>Music</h4>
+              </div>
+            </div>
+    
+          </div>
+    
+        </div>
+      </section>
+    
+      <section class="platform-section">
+    
+        <div class="container">
+    
+          <h5 class="platform-title">
+            COMPATIBLE WITH ALL MAJOR POD PLATFORMS
+          </h5>
+    
+          <div class="platform-slider">
+    
+            <div class="platform-track">
+    
+              <!-- First Set -->
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Printify</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Teepublic</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Spreadshirt</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Zazzle</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Gelato</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>SPOD</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Gooten</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>CustomCat</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Merch by Amazon</h4>
+              </div>
+    
+              <!-- Duplicate Set -->
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Printify</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Teepublic</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Spreadshirt</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Zazzle</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Gelato</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>SPOD</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Gooten</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>CustomCat</h4>
+              </div>
+    
+              <div class="platform-box">
+                <i>✪</i>
+                <h4>Merch by Amazon</h4>
+              </div>
+    
+            </div>
+    
+          </div>
+    
+        </div>
+    
+      </section>
+      <section class="every-section">
+        <div class="container text-center">
+          <div class="top-text">EVERY PURCHASE</div>
+    
+          <h1 class="section-header1 text-white">
+            What's Included in Every Bundle
+          </h1>
+    
+          <div class="card-wrapper">
+    
+            <div class="card">
+              <div class="icon">🖼️</div>
+              <h3>PNG</h3>
+              <p>Transparent background, 300 DPI</p>
+            </div>
+    
+            <div class="card">
+              <div class="icon">🎨</div>
+              <h3>PSD</h3>
+              <p>Layered, editable in Photoshop</p>
+            </div>
+    
+            <div class="card">
+              <div class="icon">📐</div>
+              <h3>AI File</h3>
+              <p>Vector, scales to any size</p>
+            </div>
+    
+            <div class="card">
+              <div class="icon">⚖️</div>
+              <h3>License</h3>
+              <p>Unlimited commercial use</p>
+            </div>
+    
+            <div class="card">
+              <div class="icon">⚡</div>
+              <h3>Instant</h3>
+              <p>Download right after checkout</p>
+            </div>
+    
+            <div class="card">
+              <div class="icon">∞</div>
+              <h3>Forever</h3>
+              <p>Files never expire</p>
+            </div>
+    
+          </div>
+    
+          <a href="#" class="btn">
+            Browse All T-Shirt Design Bundles
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </section>
+    
+      <section class="testimonial-section">
+    
+        <div class="container-fluid p-0">
+    
+            <!-- HEADING -->
+    
+            <div class="testimonial-heading text-center">
+    
+                <span>
+                    SOCIAL PROOF
+                </span>
+    
+                <h2>
+                    Loved by POD Sellers Worldwide
+                </h2>
+    
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                    <strong>4.9</strong>
+                    <small>/ 5 · 800+ reviews</small>
+                </div>
+    
+            </div>
+    
+            <!-- ROW 1 -->
+    
+            <div class="slider-row">
+    
+                <div class="slider-track left-slide">
+    
+                    <!-- CARD -->
+    
+                    <div class="review-card">
+    
+                        <div class="quote">❝</div>
+    
+                        <p>
+                            PNG files are crystal clear at 300 DPI.
+                            Transparent backgrounds, commercial
+                            license included — amazing quality.
+                        </p>
+    
+                        <div class="review-bottom">
+    
+                            <div class="user">
+    
+                                <div class="avatar green">
+                                    PR
+                                </div>
+    
+                                <div>
+                                    <h5>Priya R.</h5>
+                                    <span>Redbubble Designer</span>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stars">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                    <!-- CARD -->
+    
+                    <div class="review-card">
+    
+                        <div class="quote">❝</div>
+    
+                        <p>
+                            Been using PrintYouth for 6 months.
+                            My store went from $500/month to
+                            over $4k.
+                        </p>
+    
+                        <div class="review-bottom">
+    
+                            <div class="user">
+    
+                                <div class="avatar orange">
+                                    JT
+                                </div>
+    
+                                <div>
+                                    <h5>James T.</h5>
+                                    <span>Printify Store Owner</span>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stars">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                    <!-- CARD -->
+    
+                    <div class="review-card">
+    
+                        <div class="quote">❝</div>
+    
+                        <p>
+                            The typography bundles are stunning.
+                            My customers always ask where I get
+                            such clean designs.
+                        </p>
+    
+                        <div class="review-bottom">
+    
+                            <div class="user">
+    
+                                <div class="avatar purple">
+                                    ML
+                                </div>
+    
+                                <div>
+                                    <h5>Maya L.</h5>
+                                    <span>Teepublic Artist</span>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stars">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                    <!-- DUPLICATE -->
+    
+                    <div class="review-card">
+    
+                        <div class="quote">❝</div>
+    
+                        <p>
+                            PNG files are crystal clear at 300 DPI.
+                            Transparent backgrounds, commercial
+                            license included — amazing quality.
+                        </p>
+    
+                        <div class="review-bottom">
+    
+                            <div class="user">
+    
+                                <div class="avatar green">
+                                    PR
+                                </div>
+    
+                                <div>
+                                    <h5>Priya R.</h5>
+                                    <span>Redbubble Designer</span>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stars">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="review-card">
+    
+                        <div class="quote">❝</div>
+    
+                        <p>
+                            Been using PrintYouth for 6 months.
+                            My store went from $500/month to
+                            over $4k.
+                        </p>
+    
+                        <div class="review-bottom">
+    
+                            <div class="user">
+    
+                                <div class="avatar orange">
+                                    JT
+                                </div>
+    
+                                <div>
+                                    <h5>James T.</h5>
+                                    <span>Printify Store Owner</span>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stars">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+            <!-- ROW 2 -->
+    
+            <div class="slider-row second-row">
+    
+                <div class="slider-track right-slide">
+    
+                    <!-- CARD -->
+    
+                    <div class="review-card">
+    
+                        <div class="quote">❝</div>
+    
+                        <p>
+                            I run 3 Etsy stores and all of them use
+                            PrintYouth bundles. Massive boost.
+                        </p>
+    
+                        <div class="review-bottom">
+    
+                            <div class="user">
+    
+                                <div class="avatar pink">
+                                    EW
+                                </div>
+    
+                                <div>
+                                    <h5>Emma W.</h5>
+                                    <span>Etsy Shop Owner</span>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stars">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                    <!-- CARD -->
+    
+                    <div class="review-card">
+    
+                        <div class="quote">❝</div>
+    
+                        <p>
+                            As a new POD seller, I was lost on
+                            design. PrintYouth gave me 500
+                            ready-to-upload files instantly.
+                        </p>
+    
+                        <div class="review-bottom">
+    
+                            <div class="user">
+    
+                                <div class="avatar blue">
+                                    RS
+                                </div>
+    
+                                <div>
+                                    <h5>Rahul S.</h5>
+                                    <span>Printful Seller</span>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stars">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                    <!-- CARD -->
+    
+                    <div class="review-card">
+    
+                        <div class="quote">❝</div>
+    
+                        <p>
+                            Downloaded 500 designs in 10 mins.
+                            Amazing quality and SEO friendly.
+                        </p>
+    
+                        <div class="review-bottom">
+    
+                            <div class="user">
+    
+                                <div class="avatar indigo">
+                                    DK
+                                </div>
+    
+                                <div>
+                                    <h5>David K.</h5>
+                                    <span>Merch by Amazon</span>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stars">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                    <!-- DUPLICATE -->
+    
+                    <div class="review-card">
+    
+                        <div class="quote">❝</div>
+    
+                        <p>
+                            I run 3 Etsy stores and all of them use
+                            PrintYouth bundles. Massive boost.
+                        </p>
+    
+                        <div class="review-bottom">
+    
+                            <div class="user">
+    
+                                <div class="avatar pink">
+                                    EW
+                                </div>
+    
+                                <div>
+                                    <h5>Emma W.</h5>
+                                    <span>Etsy Shop Owner</span>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stars">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                    <div class="review-card">
+    
+                        <div class="quote">❝</div>
+    
+                        <p>
+                            As a new POD seller, I was lost on
+                            design. PrintYouth gave me 500
+                            ready-to-upload files instantly.
+                        </p>
+    
+                        <div class="review-bottom">
+    
+                            <div class="user">
+    
+                                <div class="avatar blue">
+                                    RS
+                                </div>
+    
+                                <div>
+                                    <h5>Rahul S.</h5>
+                                    <span>Printful Seller</span>
+                                </div>
+    
+                            </div>
+    
+                            <div class="stars">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    </section>
+    
+      <section class="newsletter-section">
+    
+        <div class="newsletter-container">
+    
+          <div class="left-content">
+    
+            <div class="badge">
+              <span></span>
+              FREE NEWSLETTER
+            </div>
+    
+            <h1 class="title">
+              Stay Ahead of
+              <span class="pink">Every Trend</span>
+            </h1>
+    
+            <p class="description">
+              Join 3,200+ POD sellers who get exclusive design drops
+              and niche trend reports straight to their inbox —
+              completely free.
+            </p>
+    
+            <div class="feature-list">
+    
+              <div class="feature">
+                <div class="check">✓</div>
+                Early access to new design drops
+              </div>
+    
+              <div class="feature">
+                <div class="check">✓</div>
+                Exclusive discount codes (up to 40% off)
+              </div>
+    
+              <div class="feature">
+                <div class="check">✓</div>
+                Weekly POD niche trend reports
+              </div>
+    
+              <div class="feature">
+                <div class="check">✓</div>
+                Free sample designs every month
+              </div>
+    
+            </div>
+    
+          </div>
+    
+          <div class="newsletter-card">
+    
+            <h2 class="card-title">Subscribe for Free</h2>
+    
+            <p class="card-subtitle">
+              No spam. Unsubscribe anytime. 100% free forever.
+            </p>
+    
+            <label class="input-label">Email Address</label>
+    
+            <input
+              type="email"
+              class="input-box"
+              placeholder="your@email.com"
+            >
+    
+            <button class="btn">
+              Get Free Access
+              <span>→</span>
+            </button>
+    
+            <div class="divider"></div>
+    
+            <div class="subscribers">
+    
+              <div class="avatars">
+    
+                <div class="avatar a1">DK</div>
+                <div class="avatar a2">SM</div>
+                <div class="avatar a3">PR</div>
+                <div class="avatar a4">JT</div>
+    
+              </div>
+    
+              <div class="subscriber-text">
+                <strong>3,200+</strong> POD sellers already subscribed
+              </div>
+    
+            </div>
+    
+          </div>
+    
+        </div>
+    
+      </section>
+    
+      <footer class="main-footer">
+    
+        <!-- TOP -->
+    
+        <div class="footer-top">
+    
+          <!-- LEFT -->
+    
+          <div class="footer-left">
+    
+            <div class="footer-logo">
+              <img src="images/logo.png">
+            </div>
+    
+            <p class="footer-desc">
+              Premium T-shirt design bundles for print-on-demand
+              sellers. Commercial license included with every purchase.
+            </p>
+    
+            <div class="footer-features">
+    
+              <div class="footer-feature">
+                <i class="fa-solid fa-download"></i>
+                Instant digital download
+              </div>
+    
+              <div class="footer-feature">
+                <i class="fa-regular fa-shield"></i>
+                Commercial license included
+              </div>
+    
+              <div class="footer-feature">
+                <i class="fa-solid fa-bolt"></i>
+                300 DPI print-ready files
+              </div>
+    
+            </div>
+    
+          </div>
+    
+          <!-- SHOP -->
+    
+          <div>
+    
+            <h3 class="footer-title">Shop</h3>
+    
+            <div class="footer-links">
+              <a href="#">T-Shirt Design Bundles</a>
+              <a href="#">All Designs</a>
+              <a href="#">Anime</a>
+              <a href="#">Streetwear</a>
+              <a href="#">Car & Bike</a>
+              <a href="#">Typography</a>
+              <a href="#">Featured Bundles</a>
+            </div>
+    
+          </div>
+    
+          <!-- ACCOUNT -->
+    
+          <div>
+    
+            <h3 class="footer-title">Account</h3>
+    
+            <div class="footer-links">
+              <a href="#">My Account</a>
+              <a href="#">My Downloads</a>
+              <a href="#">Sign In</a>
+              <a href="#">Cart</a>
+            </div>
+    
+          </div>
+    
+          <!-- SUPPORT -->
+    
+          <div>
+    
+            <h3 class="footer-title">Support</h3>
+    
+            <div class="footer-links">
+              <a href="#">FAQ</a>
+              <a href="#">Refund Policy</a>
+              <a href="#">License Info</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+    
+              <a href="#" class="email">
+                <i class="fa-regular fa-envelope"></i>
+                support@printyouth.in
+              </a>
+            </div>
+    
+          </div>
+    
+        </div>
+    
+        <!-- COMPATIBLE -->
+    
+        <div class="compatible-section">
+    
+          <div class="compatible-title">
+            Compatible With
+          </div>
+    
+          <div class="platforms">
+    
+            <div class="platform">Merch by Amazon</div>
+            <div class="platform">Etsy</div>
+            <div class="platform">Redbubble</div>
+            <div class="platform">Printful</div>
+            <div class="platform">Printify</div>
+            <div class="platform">Teepublic</div>
+            <div class="platform">Spreadshirt</div>
+    
+          </div>
+    
+        </div>
+    
+        <!-- BOTTOM -->
+    
+        <div class="footer-bottom">
+    
+          <div class="copyright">
+            © 2026 PrintYouth. All rights reserved.
+          </div>
+    
+          <div class="bottom-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">License</a>
+          </div>
+    
+        </div>
+    
+      </footer>
+
+    <!-- JS -->
+
+    <script>
+
+        // STICKY HEADER
+
+        const header = document.getElementById("mainHeader");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 80) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+
+        });
+
+        // MOBILE MENU
+
+        const mobileToggle = document.getElementById("mobileToggle");
+        const mainMenu = document.getElementById("mainMenu");
+
+        mobileToggle.addEventListener("click", () => {
+
+            mainMenu.classList.toggle("active");
+
+            if (mainMenu.classList.contains("active")) {
+
+                mobileToggle.innerHTML =
+                    '<i class="bi bi-x-lg"></i>';
+
+                document.body.style.overflow = "hidden";
+
+            } else {
+
+                mobileToggle.innerHTML =
+                    '<i class="bi bi-list"></i>';
+
+                document.body.style.overflow = "auto";
+            }
+
+        });
+
+        // MOBILE DROPDOWN
+
+        const dropdown = document.querySelector(".has-dropdown");
+
+        dropdown.addEventListener("click", function (e) {
+
+            if (window.innerWidth < 1200) {
+
+                e.preventDefault();
+
+                this.classList.toggle("open");
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
