@@ -96,3 +96,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+//whatsapp pop up
+function closeWpAlert(){
+    document.getElementById("wpAlert").style.display = "none";
+}
+
+
+//cart btn
+
+function openCart(){
+    document.getElementById("cartSidebar").classList.add("active");
+    document.getElementById("cartOverlay").classList.add("show");
+}
+
+function closeCart(){
+    document.getElementById("cartSidebar").classList.remove("active");
+    document.getElementById("cartOverlay").classList.remove("show");
+}
+
+
+// on click left class active
+const buttons = document.querySelectorAll(".filter-btn");
+
+buttons.forEach((btn) => {
+
+    // active class
+    if (window.location.pathname.includes(btn.dataset.page)) {
+        btn.classList.add("active");
+    }
+
+    btn.addEventListener("click", () => {
+
+        // active class remove
+        buttons.forEach((b) => b.classList.remove("active"));
+
+        // current active
+        btn.classList.add("active");
+
+        // page redirect
+        window.location.href = btn.dataset.page;
+    });
+});
