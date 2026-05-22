@@ -23,7 +23,7 @@ mobileToggle.addEventListener("click", () => {
     if (mainMenu.classList.contains("active")) {
 
         mobileToggle.innerHTML =
-            '<i class="bi bi-x-lg"></i>';
+            '<i class="fa fa-xmark"></i>';
 
         document.body.style.overflow = "hidden";
 
